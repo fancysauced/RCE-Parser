@@ -6,7 +6,7 @@
 input"$1"
 output"$2"
 
-func_ascii(){
+function ascii(){
 # Lame attempt at ASCII art to make it Super1337.
     echo '+--------------------------------+'
     echo '|======[ RCE-Cream-Parcer ]======|'
