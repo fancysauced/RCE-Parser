@@ -9,6 +9,7 @@ output="$2"
 function show_usage(){
     echo 'Usage: ./RCE-Parser.sh inputfile.nmap outputfile'
     echo ''
+}
 
 #If you want to nmap specifically for these ports:
 #nmap -Pn -sS -sV --open -p 1090,1098,1099,4444,11099,47001,47002,10999,12721,7000-7004,8000-8003,9000-9003,9503,7070,7071,45000,45001,8686,9012,50500,4848,11111,4444,4445,4786,5555,5556,8880,8088,6379,2375,8983,8383,4990,9000,8500,6066,5000,8080,3300,6129,6970 -iL targets.txt -oA rce-ports
