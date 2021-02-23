@@ -351,7 +351,6 @@ else
 #    rce_parser
     jenkins
     javarmi
-    weblogic
     jdwp
     jmx
     glassfish
@@ -373,5 +372,6 @@ else
     websphere
     solr
     portainer
+    weblogic
     final
 fi
