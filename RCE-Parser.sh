@@ -95,6 +95,17 @@ echo '
     cat $input | grep -i 'Nmap scan report for \|java-rmi\|java rmi\|rmi-registry\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
 }
 
+function weblogic (){
+echo '
+****************************************************************************************************
+- WebLogic: 7000-7004,8000-8003,9000-9003,9503,7070,7071
+
+    [https://www.exploit-db.com/search?q=weblogic]
+' >> $output
+
+   cat $input | grep -i 'Nmap scan report for \|weblogic\|^7000/tcp\|^7001/tcp\|^7002/tcp\|^7003/tcp\|^7004/tcp\|^8000/tcp\|^8001/tcp\|^8002/tcp\|^8003/tcp\|^9000/tcp\|^9001/tcp\|^9002/tcp\|^9003/tcp\|^9503/tcp\|^7070/tcp\|^7071/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+}
+
 function jdwp (){
 echo '
 ****************************************************************************************************
@@ -326,17 +337,6 @@ echo '
     cat $input | grep -i 'Nmap scan report for \|portainer\|^9000/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
 }
 
-function weblogic (){
-echo '
-****************************************************************************************************
-- WebLogic: 7000-7004,8000-8003,9000-9003,9503,7070,7071
-
-    [https://www.exploit-db.com/search?q=weblogic]
-' >> $output
-
-   cat $input | grep -i 'Nmap scan report for \|weblogic\|^7000/tcp\|^7001/tcp\|^7002/tcp\|^7003/tcp\|^7004/tcp\|^8000/tcp\|^8001/tcp\|^8002/tcp\|^8003/tcp\|^9000/tcp\|^9001/tcp\|^9002/tcp\|^9003/tcp\|^9503/tcp\|^7070/tcp\|^7071/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
-}
-
 function final (){
     echo 'Done'    
 }
@@ -351,7 +351,6 @@ else
 #    rce_parser
     jenkins
     javarmi
-    weblogic
     jdwp
     jmx
     glassfish
@@ -373,5 +372,6 @@ else
     websphere
     solr
     portainer
+    weblogic
     final
 fi
