@@ -123,6 +123,7 @@ function jmx (){
     ' >> $output
 
     cat $input | grep -i 'Nmap scan report for \|jmx\|^8686/tcp\|^9012/tcp\|^50500/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+}
 
 function glassfish (){
     echo '
