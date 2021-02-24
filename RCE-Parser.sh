@@ -92,7 +92,7 @@ echo '
     [https://medium.com/@afinepl/java-rmi-for-pentesters-part-two-reconnaissance-attack-against-non-jmx-registries-187a6561314d]
 ' >> $output
 
-    cat $input | grep -i 'Nmap scan report for \|java-rmi\|java rmi\|rmiregistry\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|java-rmi\|java rmi\|rmiregistry\|rmi registry\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
 }
 
 function weblogic (){
