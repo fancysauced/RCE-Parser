@@ -54,7 +54,7 @@ function processing (){
 }
 
 #function rce_parser (){
-#    cat $input | grep -i 'Nmap scan report for \|^1090/tcp\|^1098/tcp\|^1099/tcp\|^4444/tcp\|^11099/tcp\|^47001/tcp\|^47002/tcp\|^10999/tcp\|^12721/tcp\|^7000/tcp\|^7001/tcp\|^7002/tcp\|^7003/tcp\|^7004/tcp\|^8000/tcp\|^8001/tcp\|^8002/tcp\|^8003/tcp\|^9000/tcp\|^9001/tcp\|^9002/tcp\|^9003/tcp\|^9503/tcp\|^7070/tcp\|^7071/tcp\|^45000/tcp\|^45001/tcp\|^8686/tcp\|^9012/tcp\|^50500/tcp\|^4848/tcp\|^11111/tcp\|^4444/tcp\|^4445/tcp\|^4786/tcp\|^5555/tcp\|^5556/tcp\|^8880/tcp\|^8088/tcp\|^6379/tcp\|^2375/tcp\|^8983/tcp\|^8383/tcp\|^4990/tcp\|^8500/tcp\|^6066/tcp\|^5000/tcp\|^3300/tcp\|^6129/tcp\|^6970/tcp\|weblogic\|jdwp\|jmx\|glassfish\|jboss\|redis\|^sap$\|dameware\|coldfusion\|jenkins\|docker\|flink\|spark\|hadoop\|zoho\|manageengine\|hashicorp\|consul\|websphere\|solr\|portainer\|java-rmi\|java rmi\|rmi-registry\|hp data protector\|cisco smart install\|cisco unified communications manager\|tomcat\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' > $output
+#    cat $input | grep -i 'Nmap scan report for \|^1090/tcp\|^1098/tcp\|^1099/tcp\|^4444/tcp\|^11099/tcp\|^47001/tcp\|^47002/tcp\|^10999/tcp\|^12721/tcp\|^7000/tcp\|^7001/tcp\|^7002/tcp\|^7003/tcp\|^7004/tcp\|^8000/tcp\|^8001/tcp\|^8002/tcp\|^8003/tcp\|^9000/tcp\|^9001/tcp\|^9002/tcp\|^9003/tcp\|^9503/tcp\|^7070/tcp\|^7071/tcp\|^45000/tcp\|^45001/tcp\|^8686/tcp\|^9012/tcp\|^50500/tcp\|^4848/tcp\|^11111/tcp\|^4444/tcp\|^4445/tcp\|^4786/tcp\|^5555/tcp\|^5556/tcp\|^8880/tcp\|^8088/tcp\|^6379/tcp\|^2375/tcp\|^8983/tcp\|^8383/tcp\|^4990/tcp\|^8500/tcp\|^6066/tcp\|^5000/tcp\|^3300/tcp\|^6129/tcp\|^6970/tcp\|weblogic\|jdwp\|jmx\|glassfish\|jboss\|redis\|^sap$\|dameware\|coldfusion\|jenkins\|docker\|flink\|spark\|hadoop\|zoho\|manageengine\|hashicorp\|consul\|websphere\|solr\|portainer\|java-rmi\|java rmi\|rmi-registry\|hp data protector\|cisco smart install\|cisco unified communications manager\|tomcat\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' > $output
 #}
 
 function jenkins (){
@@ -72,7 +72,7 @@ echo '
     Check /securityRealm/user/admin/, should return admin user page, if vulnerable.
 ' >> $output
 
-    cat $input | grep -i 'Nmap scan report for \|jenkins\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|jenkins\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function javarmi (){
@@ -92,7 +92,7 @@ echo '
     [https://medium.com/@afinepl/java-rmi-for-pentesters-part-two-reconnaissance-attack-against-non-jmx-registries-187a6561314d]
 ' >> $output
 
-    cat $input | grep -i 'Nmap scan report for \|java-rmi\|java rmi\|rmiregistry\|rmi registry\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|java-rmi\|java rmi\|rmiregistry\|rmi registry\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function weblogic (){
@@ -103,7 +103,7 @@ echo '
     [https://www.exploit-db.com/search?q=weblogic]
 ' >> $output
 
-   cat $input | grep -i 'Nmap scan report for \|weblogic\|^7000/tcp\|^7001/tcp\|^7002/tcp\|^7003/tcp\|^7004/tcp\|^8000/tcp\|^8001/tcp\|^8002/tcp\|^8003/tcp\|^9000/tcp\|^9001/tcp\|^9002/tcp\|^9003/tcp\|^9503/tcp\|^7070/tcp\|^7071/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+   cat $input | grep -i 'Nmap scan report for \|weblogic\|^7000/tcp\|^7001/tcp\|^7002/tcp\|^7003/tcp\|^7004/tcp\|^8000/tcp\|^8001/tcp\|^8002/tcp\|^8003/tcp\|^9000/tcp\|^9001/tcp\|^9002/tcp\|^9003/tcp\|^9503/tcp\|^7070/tcp\|^7071/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function jdwp (){
@@ -116,7 +116,7 @@ echo '
     [https://github.com/IOActive/jdwp-shellifier]
 ' >> $output
 
-    cat $input | grep -i 'Nmap scan report for \|jdwp\|^45000/tcp\|^45001/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|jdwp\|^45000/tcp\|^45001/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function jmx (){
@@ -127,7 +127,7 @@ echo '
     [https://www.rapid7.com/db/modules/exploit/multi/misc/java_jmx_server]
 ' >> $output
 
-    cat $input | grep -i 'Nmap scan report for \|jmx\|^8686/tcp\|^9012/tcp\|^50500/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|jmx\|^8686/tcp\|^9012/tcp\|^50500/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function glassfish (){
@@ -138,7 +138,7 @@ echo '
     [https://www.rapid7.com/db/modules/auxiliary/scanner/http/glassfish_traversal]
 ' >> $output
 
-    cat $input | grep -i 'Nmap scan report for \|glassfish\|^4848/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|glassfish\|^4848/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function jboss (){
@@ -151,7 +151,7 @@ echo '
     [https://github.com/joaomatosf/jexboss]
 ' >> $output
 
-    cat $input | grep -i 'Nmap scan report for \|jboss\|^11111/tcp\|^4444/tcp\|^4445/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|jboss\|^11111/tcp\|^4444/tcp\|^4445/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function ciscosmartinstall (){
@@ -164,7 +164,7 @@ echo '
     [https://github.com/Sab0tag3d/SIET]
 ' >> $output
 
-    cat $input | grep -i 'Nmap scan report for \|cisco smart install\|^4786/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|cisco smart install\|^4786/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function hpdataprotector (){
@@ -177,7 +177,7 @@ echo '
     [https://www.rapid7.com/db/modules/exploit/windows/misc/hp_dataprotector_cmd_exec]
 ' >> $output
 
-    cat $input | grep -i 'Nmap scan report for \|hp data protector\|^5555/tcp\|^5556/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|hp data protector\|^5555/tcp\|^5556/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function redis (){
@@ -188,7 +188,7 @@ echo '
     [https://www.rapid7.com/db/modules/exploit/linux/redis/redis_replication_cmd_exec/]
 ' >> $output
 
-    cat $input | grep -i 'Nmap scan report for \|redis\|^6379/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|redis\|^6379/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function sap (){
@@ -199,7 +199,7 @@ echo '
     [https://github.com/chipik/SAP_GW_RCE_exploit]
 ' >> $output
 
-    cat $input | grep -i 'Nmap scan report for \|^sap$\|^3300/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|^sap$\|^3300/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function dameware (){
@@ -212,7 +212,7 @@ echo '
     [https://github.com/tenable/poc/blob/master/Solarwinds/Dameware/dwrcs_dwDrvInst_rce.py]
 ' >> $output
 
-    cat $input | grep -i 'Nmap scan report for \|dameware\|^6129/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|dameware\|^6129/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function cucm (){
@@ -223,7 +223,7 @@ echo '
     http://[CUCM IP Address]:6970/ConfigFileCacheList.txt
 ' >> $output
 
-    cat $input | grep -i 'Nmap scan report for \|cisco unified communications manager\|^6970/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|cisco unified communications manager\|^6970/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function coldfusion (){
@@ -234,7 +234,7 @@ echo '
     [https://www.tenable.com/plugins/nessus/99731]
 ' >> $output
 
-    cat $input | grep -i 'Nmap scan report for \|coldfusion\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|coldfusion\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function docker (){
@@ -244,7 +244,7 @@ echo '
 
 
 ' >> $output
-    cat $input | grep -i 'Nmap scan report for \|docker\|^2375/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|docker\|^2375/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function atlassian (){
@@ -254,7 +254,7 @@ echo '
 
 
 ' >> $output
-    cat $input | grep -i 'Nmap scan report for \|atlassian\|^4990/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|atlassian\|^4990/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function flink (){
@@ -264,7 +264,7 @@ echo '
 
 
 ' >> $output
-    cat $input | grep -i 'Nmap scan report for \|flink\|^5000/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|flink\|^5000/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function spark (){
@@ -274,7 +274,7 @@ echo '
 
 
 ' >> $output
-    cat $input | grep -i 'Nmap scan report for \|spark\|^6066/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|spark\|^6066/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function hadoop (){
@@ -284,7 +284,7 @@ echo '
 
 
 ' >> $output
-    cat $input | grep -i 'Nmap scan report for \|hadoop\|^8088/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|hadoop\|^8088/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function manageengine (){
@@ -294,7 +294,7 @@ echo '
 
 
 ' >> $output
-    cat $input | grep -i 'Nmap scan report for \|zoho\|manageengine\|^8383/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|zoho\|manageengine\|^8383/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function hashicorp (){
@@ -304,7 +304,7 @@ echo '
 
 
 ' >> $output
-    cat $input | grep -i 'Nmap scan report for \|hashicorp\|consul\|^8500/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|hashicorp\|consul\|^8500/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function websphere (){
@@ -314,7 +314,7 @@ echo '
 
 
 ' >> $output
-    cat $input | grep -i 'Nmap scan report for \|websphere\|^8880/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|websphere\|^8880/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function solr (){
@@ -324,7 +324,7 @@ echo '
 
 
 ' >> $output
-    cat $input | grep -i 'Nmap scan report for \|solr\|^8983/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|solr\|^8983/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function portainer (){
@@ -334,7 +334,7 @@ echo '
 
 
 ' >> $output
-    cat $input | grep -i 'Nmap scan report for \|portainer\|^9000/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|portainer\|^9000/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function final (){
