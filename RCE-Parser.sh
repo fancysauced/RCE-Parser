@@ -72,7 +72,7 @@ echo '
     Check /securityRealm/user/admin/, should return admin user page, if vulnerable.
 ' >> $output
 
-    cat $input | grep -i 'Nmap scan report for \|jenkins\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
+    cat $input | grep -i 'Nmap scan report for \|jenkins\|z-SNAPSHOT\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
 function javarmi (){
