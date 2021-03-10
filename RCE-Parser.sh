@@ -341,7 +341,9 @@ function ilo (){
 echo '
 ****************************************************************************************************
 - iLO: 
-HP iLO 4 < 2.53. Creates an iLO administrative user without authentication.
+
+    HP iLO 4 < 2.53. Creates an iLO administrative user without authentication.
+
     [https://github.com/skelsec/CVE-2017-12542]
 ' >> $output
 
@@ -352,7 +354,7 @@ function printers (){
 echo '
 ****************************************************************************************************
 - Printers: 
-# Not necessarily an RCE, but can sometimes obtain creds by sending them to a system you control.
+    # Not necessarily an RCE, but can sometimes obtain creds by sending them to a system you control.
 
 ' >> $output
     cat $input | grep -i 'Nmap scan report for \|printer\|print server\|lexmark\|canon\|brother\|xerox\|kyocera\|ricoh\|epson\|konica\|Virata-EmWeb\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
