@@ -81,7 +81,7 @@ echo '
 - Java RMI: 1090,1098,1099,4444,11099,47001,47002,10999
 - Java RMI vcenter: 12721
 
-    nmap -v -Pn --open -sV -p 1099 --script rmi-vulnclassloader,rmi-dumpregistry
+    nmap -v -Pn --open -sV -p 1099 --script rmi-vuln-classloader,rmi-dumpregistry
 
     [https://github.com/frohoff/ysoserial]
 
