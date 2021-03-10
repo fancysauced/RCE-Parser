@@ -337,6 +337,17 @@ echo '
     cat $input | grep -i 'Nmap scan report for \|portainer\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
+function ilo (){
+echo '
+****************************************************************************************************
+- iLO: 
+HP iLO 4 < 2.53. Creates an iLO administrative user without authentication.
+    [https://github.com/skelsec/CVE-2017-12542]
+' >> $output
+
+   cat $input | grep -i 'Nmap scan report for \|Integrated Lights-Out\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
+}
+
 function printers (){
 echo '
 ****************************************************************************************************
@@ -383,6 +394,7 @@ else
     websphere
     solr
     portainer
+    ilo
     printers
     final
 fi
