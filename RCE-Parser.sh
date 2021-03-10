@@ -337,6 +337,16 @@ echo '
     cat $input | grep -i 'Nmap scan report for \|portainer\|^9000/tcp\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
+function printers (){
+echo '
+****************************************************************************************************
+- Printers: 
+# Not necessarily an RCE, but can sometimes obtain creds by sending them to a system you control.
+
+' >> $output
+    cat $input | grep -i 'Nmap scan report for \|printer\|print server\|lexmark\|canon\|brother\|xerox\|kyocera\|ricoh\|epson\|konica\|Virata-EmWeb\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 '/tcp' >> $output
+}
+
 function final (){
     echo 'Done'    
 }
@@ -373,5 +383,6 @@ else
     solr
     portainer
     weblogic
+    printers
     final
 fi
