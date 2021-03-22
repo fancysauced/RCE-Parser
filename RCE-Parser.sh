@@ -350,6 +350,28 @@ echo '
    cat $input | grep -i 'Nmap scan report for \|Integrated Lights-Out\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
 }
 
+function vcenter (){
+echo '
+****************************************************************************************************
+- VMware vCenter: 
+
+    [https://github.com/horizon3ai/CVE-2021-21972]
+' >> $output
+
+   cat $input | grep -i 'Nmap scan report for \|vcenter\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
+}
+
+function bigip (){
+echo '
+****************************************************************************************************
+- F5 BigIP: 
+
+    [https://github.com/h4x0r-dz/RCE-Exploit-in-BIG-IP]
+' >> $output
+
+   cat $input | grep -i 'Nmap scan report for \|BIG-IP\|Service Info:' | sed 's/Nmap scan report for /\n/g' | grep -vi 'filtered\|closed\|#\|SF:\|SF-\|unrecognized\|incorrect\|Warning:\|Host is' | grep -B2 -A1 '/tcp' >> $output
+}
+
 function printers (){
 echo '
 ****************************************************************************************************
@@ -397,6 +419,8 @@ else
     solr
     portainer
     ilo
+    vcenter
+    bigip
     printers
     final
 fi
